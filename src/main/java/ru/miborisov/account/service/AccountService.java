@@ -38,6 +38,18 @@ public class AccountService {
     }
 
     /**
+     * Get account details
+     *
+     * @param email account to get details of
+     * @return account details
+     */
+    public AccountDetails details(String email) {
+        var existingAccount = accounts.get(email);
+        if (existingAccount == null) throw new AccountException("Account with email '" + email + "' does not exist");
+        return AccountDetails.fromAccount(existingAccount);
+    }
+
+    /**
      * Transfers money from one account to another
      *
      * @param sourceAccountEmail account from which money is trasferred
@@ -98,17 +110,5 @@ public class AccountService {
         synchronized (account) {
             account.increment(amount);
         }
-    }
-
-    /**
-     * Get account details
-     *
-     * @param email account to get details of
-     * @return account details
-     */
-    public AccountDetails details(String email) {
-        var existingAccount = accounts.get(email);
-        if (existingAccount == null) throw new AccountException("Account with email '" + email + "' does not exist");
-        return AccountDetails.fromAccount(existingAccount);
     }
 }

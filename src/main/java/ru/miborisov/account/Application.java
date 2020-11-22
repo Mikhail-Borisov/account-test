@@ -47,7 +47,7 @@ public class Application {
 
         app.post("/transfer", (ctx) -> {
             var request = ctx.bodyAsClass(AccountTransfer.class);
-            accountService.transfer(request.source, request.target, request.amount);
+            accountService.transfer(request.sourceEmail, request.targetEmail, request.amount);
             ctx.res.setStatus(200);
         });
 

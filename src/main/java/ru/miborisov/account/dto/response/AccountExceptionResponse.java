@@ -3,10 +3,10 @@ package ru.miborisov.account.dto.response;
 import ru.miborisov.account.model.AccountException;
 
 public class AccountExceptionResponse {
-    public final String exception;
+    public final String error;
 
-    private AccountExceptionResponse(String exception) {
-        this.exception = exception;
+    private AccountExceptionResponse(String error) {
+        this.error = error;
     }
 
     public static AccountExceptionResponse fromAccountException(AccountException e) {
