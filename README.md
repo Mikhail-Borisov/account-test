@@ -19,7 +19,7 @@ After that, you can run the JAR with:
 java -jar target/account-1.0-SNAPSHOT-jar-with-dependencies.jar
 ```
 
-After that server starts serving requests from http://localhost:5000
+and the server starts serving requests from http://localhost:5000
 
 ## REST routes description
 
@@ -29,51 +29,58 @@ All endpoints use JSON.
 POST /api/account/create
 
 Request body:
+```json
 { "email": "johndoe@mail.com" }
-
+```
 Response body:
-empty body with status 200 or
-{ "error": "Account with email 'johndoe@mail.com' already exists" }
+```text
+Empty body with status 200
+```
 
 ### Account details
 POST /api/account/details
 
 Request body:
+```json
 { "email": "johndoe@mail.com" }
-
+```
 Response body:
-{ "email": "johndoe@mail.com", "amount": 0 } or
-{ "error": "Account with email 'johndoe@mail.com' does not exist" }
+```json
+{ "email": "johndoe@mail.com", "amount": 0 }
+```
 
 ### Top up account
 POST /api/account/topUp
 
 Request body:
+```json
 { "email": "johndoe@mail.com", "amount": 100 }
-
+```
 Response body:
-empty body with status 200 or
-{ "error": "Account with email 'johndoe@mail.com' does not exist" }
+```text
+Empty body with status 200
+```
 
 ### Withdraw from account
 POST /api/account/withdraw
 
 Request body:
+```json
 { "email": "johndoe@mail.com", "amount": 100 }
-
+```
 Response body:
-empty body with status 200 or 
-{ "error": "Account with email 'johndoe@mail.com' does not exist" } or
-{ "error": "Account with email 'johndoe@mail.com' does not have enough money to withdraw"
+```text
+Empty body with status 200 
+```
 
 ### Transfer money
 POST /api/account/transfer
 
 Request body:
+```json
 { "sourceEmail": "johndoe@mail.com", "targetEmail": "goodfriend@mail.com", "amount": 100 }
-
+```
 Response body:
-empty body with status 200 or
-{ "error": "Source account with email 'johndoe@mail.com' does not exist" } or
-{ "error": "Target account with email 'goodfriend@mail.com' does not exist" } or
-{ "error": "Account with email 'johndoe@mail.com' does not have enough money to transfer" }
+```text
+Empty body with status 200
+```
